@@ -1,0 +1,33 @@
+
+@import '../../constants.scss';
+
+.AboutUs{
+    background-color: $white;
+    .Title{
+        font-size: 80px;
+        width: 100%;
+        text-align: center;
+        padding-bottom: 5%;
+    }
+    .Subtitle{
+        font-size: 40px;
+        width: 100%;
+        text-align: center;
+        // padding-bottom: 5%;
+      }
+      p {
+          text-align: justify;
+          text-justify: inter-word;
+      }
+      .Diagram{
+          display:flex;
+          justify-content: center;
+      }
+      .Collaborator{
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+      }
+
+}
+
