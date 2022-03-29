@@ -37,7 +37,7 @@ app.use(router)
 //let server = https.create(options,app)
 //server.listen(PORT,()=>{console.log(`Server on port: ${PORT} and host ${HOST}`)})
 
-app.listen(PORT,HOST,()=>{console.log(`Server on port: ${PORT} and host ${HOST}`)});
+app.listen(process.env.PORT || PORT,HOST,()=>{console.log(`Server on port: ${PORT} and host ${HOST}`)});
 
 // app.get('/', function(req, res) {
 //     res.send("Hello World!");
