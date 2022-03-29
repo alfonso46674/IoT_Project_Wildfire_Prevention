@@ -1,6 +1,6 @@
 applications:
   - name: iot-wildfire
-    memory: 256M
+    memory: 512M
     buildpacks: 
       - https://github.com/cloudfoundry/nodejs-buildpack 
     instances: 1
