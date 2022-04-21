@@ -14,7 +14,7 @@ const Dashboard  = () => {
     notification.warning({
       message: 'Hey man watch out with the fire',
       description:
-        'Our sensonrs near the area have detected a fire nearby, be carefull.',
+        'Our sensonrs near the area have detected a fire nearby, be careful.',
       onClick: () => {
         console.log('Notification Clicked!');
       },
@@ -25,7 +25,7 @@ const Dashboard  = () => {
     notification.error({
       message: 'Hey man you are on fire',
       description:
-        'Supossibly your on fire right now, according to our sensonrs.',
+        'Supposedly you are on fire right now, according to our sensonrs.',
       onClick: () => {
         console.log('Notification Clicked!');
       },
