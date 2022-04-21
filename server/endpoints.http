@@ -1,13 +1,18 @@
 @host = http://localhost:8080/api
 # @host = https://iot-wildfire.mybluemix.net/api
 
-POST {{host}}/temperature/register
+###
+GET {{host}}/data/history
+
+###
+POST {{host}}/data/upload
 Content-Type: application/json
 
 {
-    "sensorId":3,
-    "temperature":200
+    "sensorId": 1,
+    "co2": 60.00,
+    "temperature": 30,
+    "humidity": 54,
+    "latitudeGPS": 152.52,
+    "longitudeGPS": 90.32
 }
-
-###
-GET {{host}}/temperature/history

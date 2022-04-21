@@ -1,9 +1,7 @@
 const router = require('express').Router()
 
-const temperatureRoute = require('./temperature')
 const dataRoute = require('./data')
 
-router.use('/api/temperature',temperatureRoute)
 router.use('/api/data',dataRoute)
 
 
