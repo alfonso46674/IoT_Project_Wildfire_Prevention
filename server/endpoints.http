@@ -16,3 +16,7 @@ Content-Type: application/json
     "latitudeGPS": 152.52,
     "longitudeGPS": 90.32
 }
+
+
+###
+DELETE {{host}}/data/delete?uid=4

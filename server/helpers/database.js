@@ -1,5 +1,4 @@
-//library for reading and writing in the db
-//TODO Refactor this to use DynamoDB
+//library for reading, writing, deleting and updating in the db
 
 let fs = require('fs')
 
@@ -21,6 +20,27 @@ lib.write = function(data){
         console.log({"There was an error writing to the DB":error})
         return false
     }
-} 
+}
+
+//deletes the object from the db given the property to look, and its value
+lib.delete = function(property, propertyValue){
+    try{
+        let data = lib.read()
+        
+        //find if the object with the selected property and propertyValue exists
+        if(data.find(element => element[property] === propertyValue)){
+            //filter the data for element that does not match the given propertyValue,
+            //which in turn will return an array with all of the elements except the one with the matching propertyValue
+            lib.write( data.filter(element => element[property] !== propertyValue) )
+            return true
+        } else {
+            return false
+        }
+    } catch(error){
+        console.log({'Internal error in lib.delete':error})
+    }
+    
+
+}
 
 module.exports = lib

@@ -16,7 +16,7 @@ router.get('/history',(req,res)=>{
 //returns the most recent data for each sensor
 router.get('/recentActivity')
 
-//returns all of the sotred data for a single sensor
+//returns all of the stored data for a single sensor
 router.get('/sensorData')
 
 //Upload data to the DB and relate it to a sensor
@@ -54,7 +54,22 @@ router.post('/upload',(req,res)=>{
 })
 
 //Delete an entry given its data uid
-router.delete('/delete')
+router.delete('/delete',(req,res)=>{
+    try{
+        let uidToDelete = req.query.uid
+        //delete by property and propertyValue with the db helper function
+        if(db.delete('uid',parseInt(uidToDelete))){
+            res.status(200).send({'Success':`Data deleted for the object with uid ${uidToDelete}` })
+        } else {
+            res.status(400).send({'Deletion error':`Data with the uid ${uidToDelete} does not exist`})
+        }
+
+
+    }catch(error){
+        res.status(400).send({'Error while deleting the data':error})
+    }
+    
+})
 
 
 
