@@ -8,16 +8,17 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
+function createData(sensorId, co2, temperature, humidity, location, date, time) {
+  return { sensorId, co2, temperature, humidity, location, date, time};
 }
 
 const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
+  createData(1,60,32,50,"clickable data","2022-11-23","15:30:02"),
+  createData(1,60,32,50,"clickable data","2022-09-02","15:30:02"),
+  createData(1,60,32,50,"clickable data","2022-11-01","15:30:02"),
+  createData(1,60,32,50,"clickable data","2022-11-23","15:30:02"),
+  createData(1,60,32,50,"clickable data","2022-11-23","15:30:02"),
+  createData(1,60,32,50,"clickable data","2022-11-23","15:30:02"),
 ];
 
 const TableInfo = () => {
@@ -28,10 +29,12 @@ const TableInfo = () => {
           <TableHead>
             <TableRow>
               <TableCell>Sensor</TableCell>
-              <TableCell align="right">Location</TableCell>
+              <TableCell align="right">CO2</TableCell>
               <TableCell align="right">Temperature</TableCell>
               <TableCell align="right">Humidity</TableCell>
-              <TableCell align="right">CO2</TableCell>
+              <TableCell align="right">Location</TableCell>
+              <TableCell align="right">Date</TableCell>
+              <TableCell align="right">Time</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -41,12 +44,14 @@ const TableInfo = () => {
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
-                  {row.name}
+                  {row.sensorId}
                 </TableCell>
-                <TableCell align="right">{row.calories}</TableCell>
-                <TableCell align="right">{row.fat}</TableCell>
-                <TableCell align="right">{row.carbs}</TableCell>
-                <TableCell align="right">{row.protein}</TableCell>
+                <TableCell align="right">{row.co2}</TableCell>
+                <TableCell align="right">{row.temperature}</TableCell>
+                <TableCell align="right">{row.humidity}</TableCell>
+                <TableCell align="right">{row.location}</TableCell>
+                <TableCell align="right">{row.date}</TableCell>
+                <TableCell align="right">{row.time}</TableCell>
               </TableRow>
             ))}
           </TableBody>
