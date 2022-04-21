@@ -7,21 +7,40 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import axios from 'axios';
 
-function createData(sensorId, co2, temperature, humidity, location, date, time) {
-  return { sensorId, co2, temperature, humidity, location, date, time};
+function createData(uid,sensorId, co2, temperature, humidity, location, date, time) {
+  return { uid,sensorId, co2, temperature, humidity, location, date, time};
 }
 
+
 const rows = [
-  createData(1,60,32,50,"clickable data","2022-11-23","15:30:02"),
-  createData(1,60,32,50,"clickable data","2022-09-02","15:30:02"),
-  createData(1,60,32,50,"clickable data","2022-11-01","15:30:02"),
-  createData(1,60,32,50,"clickable data","2022-11-23","15:30:02"),
-  createData(1,60,32,50,"clickable data","2022-11-23","15:30:02"),
-  createData(1,60,32,50,"clickable data","2022-11-23","15:30:02"),
+  createData(1,1,60,32,50,"clickable data","2022-11-23","15:30:02"),
+  createData(2,1,60,32,50,"clickable data","2022-09-02","15:30:02"),
+  createData(3,1,60,32,50,"clickable data","2022-11-01","15:30:02"),
+  createData(4,1,60,32,50,"clickable data","2022-11-23","15:30:02"),
+  createData(5,1,60,32,50,"clickable data","2022-11-23","15:30:02"),
+  createData(6,1,60,32,50,"clickable data","2022-11-23","15:30:02"),
 ];
 
 const TableInfo = () => {
+  //TODO make this url only accesible from config/env_variables
+  let url = "http://localhost:8080"
+  const urlGetData = `${url}/api/data/history`
+
+  const [sensorData,setSensorData] = React.useState([])
+
+  React.useEffect(()=>{
+    axios.get(urlGetData)
+    .then(res =>{
+      console.log(res.data)
+      setSensorData(res.data)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  },[])
+
   return (
     <div className='TableDivContainer'>
       <TableContainer component={Paper} style={{ width: 1200, marginLeft:'6rem'}}>
@@ -38,9 +57,9 @@ const TableInfo = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
+            {sensorData.map((row) => (
               <TableRow
-                key={row.name}
+                key={row.uid}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
