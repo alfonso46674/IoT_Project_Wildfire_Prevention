@@ -52,8 +52,7 @@ const TableInfo = () => {
               <TableCell align="right">Temperature</TableCell>
               <TableCell align="right">Humidity</TableCell>
               <TableCell align="right">Location</TableCell>
-              <TableCell align="right">Date</TableCell>
-              <TableCell align="right">Time</TableCell>
+              <TableCell align="right">Timestamp</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -69,8 +68,7 @@ const TableInfo = () => {
                 <TableCell align="right">{row.temperature}</TableCell>
                 <TableCell align="right">{row.humidity}</TableCell>
                 <TableCell align="right">{row.location}</TableCell>
-                <TableCell align="right">{row.date}</TableCell>
-                <TableCell align="right">{row.time}</TableCell>
+                <TableCell align="right">{row.dateTime}</TableCell>
               </TableRow>
             ))}
           </TableBody>

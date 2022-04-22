@@ -38,7 +38,8 @@ router.post('/upload',(req,res)=>{
                 latitudeGPS: latitudeGPS,
                 longitudeGPS: longitudeGPS,
                 timestamp: +new Date(), //used for comparisons
-                dateTime: new Date() // used to display it in the front end
+                dateTime: new Date().toLocaleString() // used to display it in the front end 
+                //TODO Display the dateTime in a better way, and make sure it is in UTC time
             }
 
             //append the data object to the db
