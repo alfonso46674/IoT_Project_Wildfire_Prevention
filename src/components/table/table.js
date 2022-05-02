@@ -34,12 +34,13 @@ const TableInfo = () => {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Sensor</TableCell>
-              <TableCell align="right">CO2</TableCell>
-              <TableCell align="right">Temperature</TableCell>
-              <TableCell align="right">Humidity</TableCell>
-              <TableCell align="right">Location</TableCell>
-              <TableCell align="right">Timestamp</TableCell>
+              <TableCell align="center">Sensor</TableCell>
+              <TableCell align="center">CO2</TableCell>
+              <TableCell align="center">Temperature</TableCell>
+              <TableCell align="center">Humidity</TableCell>
+              <TableCell align="center">Location</TableCell>
+              <TableCell align="center">Risk</TableCell>
+              <TableCell align="center">Timestamp</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -48,14 +49,15 @@ const TableInfo = () => {
                 key={row.uid}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
-                <TableCell component="th" scope="row">
+                <TableCell align="center" component="th" scope="row">
                   {row.sensorId}
                 </TableCell>
-                <TableCell align="right">{row.co2}</TableCell>
-                <TableCell align="right">{row.temperature}</TableCell>
-                <TableCell align="right">{row.humidity}</TableCell>
-                <TableCell align="right">{row.location}</TableCell>
-                <TableCell align="right">{row.dateTime}</TableCell>
+                <TableCell align="center">{row.co2}</TableCell>
+                <TableCell align="center">{row.temperature}</TableCell>
+                <TableCell align="center">{row.humidity}</TableCell>
+                <TableCell align="center">{row.location}</TableCell>
+                <TableCell align="center">{row.risk}</TableCell>
+                <TableCell align="center">{row.dateTime}</TableCell>
               </TableRow>
             ))}
           </TableBody>
