@@ -3,6 +3,7 @@ const path = require('path')
 const cors = require('cors')
 //const fs = require('fs')
 // const https = require('https')
+const {url} = require('../src/config/env_variables')
 
 //import routes to use
 const router = require('./routes/index.js')
