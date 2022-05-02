@@ -26,13 +26,13 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "react_start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "nodemon server/server.js",
-    "prod": "react-scripts build && node server/server.js",
-    "deploy": "node server/server.js"
+    "server": "cross-env NODE_ENV=development nodemon server/server.js",
+    "prod": "cross-env NODE_ENV=production react-scripts build && node server/server.js",
+    "start": "cross-env NODE_ENV=production node server/server.js"
   },
   "eslintConfig": {
     "extends": [

@@ -9,7 +9,7 @@ const router = require('./routes/index.js')
 
 const app = express()
 
-const PORT = 8080
+const PORT = 8081
 const HOST = '0.0.0.0'
 
 //For a https server certification
@@ -21,7 +21,9 @@ const HOST = '0.0.0.0'
 // }
 
 //server static build of react project
-app.use(express.static(path.normalize('build')))
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static(path.normalize('build')))
+}
 
 const {json, urlencoded} = express
 
@@ -38,10 +40,6 @@ app.use(router)
 //server.listen(PORT,()=>{console.log(`Server on port: ${PORT} and host ${HOST}`)})
 
 app.listen(process.env.PORT || PORT,HOST,()=>{console.log(`Server on port: ${PORT} and host ${HOST}`)});
-
-// app.get('/', function(req, res) {
-//     res.send("Hello World!");
-// });
 
 
 // let server = http.createServer(app)
