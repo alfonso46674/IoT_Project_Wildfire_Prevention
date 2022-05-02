@@ -26,6 +26,9 @@ router.post('/upload',(req,res)=>{
         if( co2 !== undefined && temperature !== undefined && humidity !== undefined &&
             latitudeGPS !== undefined && longitudeGPS && sensorId !== undefined)
             {
+            //evaluate the possible risk with the sensor's data
+            let risk = evaluateData({co2,temperature,humidity})
+
             //read the db.json
             let dbJSON = db.read()
             //create the new data to store in the db.json
@@ -37,6 +40,7 @@ router.post('/upload',(req,res)=>{
                 humidity: humidity,
                 latitudeGPS: latitudeGPS,
                 longitudeGPS: longitudeGPS,
+                risk: risk.value,
                 timestamp: +new Date(), //used for comparisons
                 dateTime: new Date().toLocaleString() // used to display it in the front end 
                 //TODO Display the dateTime in a better way, and make sure it is in UTC time
@@ -73,5 +77,43 @@ router.delete('/delete',(req,res)=>{
 })
 
 
+//function to evaluate the sensors data
+//@param an object with the sensors data (co2,)
+//@returns an object {id,value}. The value is suggested risk according to the sensors data
+function evaluateData(sensorsData){
+    try{
+        let {co2, temperature, humidity} = sensorsData
+        co2 = parseInt(co2)
+        temperature = parseInt(temperature)
+        humidity = parseInt(humidity)
+    
+        //low risk
+        if(temperature < 26 || humidity >= 40){
+            return {id:1,value:'Low'}
+        }
+        //moderate risk 
+        else if((temperature >= 26 && temperature < 30) 
+            && (humidity >= 26 && humidity < 40)){
+            return {id:2,value:'Moderate'}
+        }
+        //high risk
+        else if((temperature >= 30 && temperature < 35)
+        && (humidity >= 15 && humidity < 26)){
+            return {id:3,value:'High'}
+        }
+        //inminent risk 
+        else if(temperature >= 35 || humidity < 15){
+            return {id:4,value:'Inminent'}
+        } 
+        //error evaluating risk
+        else {  
+            return {id:6,value:'Unknown'}
+        }
+    }catch(e){
+        console.log({'Error evaluating risk':e})
+        return {id:6,risk:'Unknown'}
+    }
+    
 
+}
 module.exports = router
