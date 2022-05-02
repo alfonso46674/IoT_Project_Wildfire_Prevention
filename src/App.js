@@ -11,9 +11,9 @@ function App() {
         <Router>
           <div className = "content">
             <Switch>
-              <Route exact path="/dashboard" render={() => <DashboardContainer />}></Route>
+              <Route exact path="/homepage" render={() => <HomepageContainer />}></Route>
               <Route exact path="/aboutUs" render={() => <AboutUsContainer />}></Route>
-              <Route exact path="/" render={() => <HomepageContainer />}></Route>
+              <Route exact path="/" render={() => < DashboardContainer/>}></Route>
 
             </Switch>
           </div>
