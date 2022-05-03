@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './table.css';
+import './table.scss';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -41,7 +41,7 @@ const TableInfo = () => {
   
   return (
     <div className='TableDivContainer'>
-      <TableContainer component={Paper} style={{ width: 1200, marginLeft:'6rem'}}>
+      <TableContainer component={Paper} >
         <Table>
           <TableHead>
             <TableRow>
