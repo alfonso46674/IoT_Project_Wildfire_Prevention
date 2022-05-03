@@ -21,7 +21,7 @@ const AboutUsContainer = () => {
                 </Row>
                 <Row>
                     <Col>
-                        <h2 className='Subtitle'>How it works?</h2>
+                        <h2 className='Subtitle'>How does it works?</h2>
                         <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dolor turpis, imperdiet a dapibus quis, aliquam eu nisi. In ac convallis est. Aliquam rhoncus enim ac ex hendrerit, sed mollis urna tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In blandit, nunc vitae mollis laoreet, ipsum orci hendrerit augue, sit amet rutrum tellus augue vel tellus. Suspendisse consectetur sem nec pulvinar auctor. Praesent iaculis dignissim neque tincidunt dapibus. Phasellus sem ex, aliquam sed hendrerit ac, suscipit eget massa. Mauris sollicitudin vehicula enim et fermentum. Donec faucibus pretium mi, sodales aliquet leo feugiat eget. Sed a luctus ligula. Vivamus dolor dui, cursus convallis mauris et, congue cursus metus. Aenean vel est sapien. Morbi aliquam maximus leo nec euismod. Pellentesque vitae magna sit amet ipsum malesuada euismod non ac erat. Vestibulum consectetur fermentum facilisis. </p>
                     </Col>
                     <Col>
