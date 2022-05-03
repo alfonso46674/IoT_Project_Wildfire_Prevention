@@ -17,17 +17,24 @@ const TableInfo = () => {
   //state variables to look for changes in the sensors data from the backend
   const [sensorData,setSensorData] = React.useState([])
 
-  //obtain the sensors data from the backend
-  React.useEffect(()=>{
+  const [refreshSensorData, setRefreshSensorData] = React.useState(false)
+
+    //obtain the sensors data from the backend
+  const getSensorData = async ()=> {
     axios.get(urlObtainHistory)
     .then(res =>{
-      console.log(res.data)
+      // console.log(res.data)
       setSensorData(res.data)
     })
     .catch(err => {
       console.log(err)
     })
-  },[])
+  }
+
+  //look for changes in the state of the sensors data
+  React.useEffect(()=>{
+    getSensorData()
+  },[refreshSensorData])
 
   
   //variables for the map dialog state
@@ -41,6 +48,9 @@ const TableInfo = () => {
   
   return (
     <div className='TableDivContainer'>
+      <button type="button" onClick={ () => setRefreshSensorData(!refreshSensorData)}>
+        Refresh
+      </button>
       <TableContainer component={Paper} >
         <Table>
           <TableHead>
