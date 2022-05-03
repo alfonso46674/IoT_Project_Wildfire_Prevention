@@ -17,11 +17,11 @@ const Navbar = ({ user, setUser }) => {
                     </img>
                 </a>
             </Col>
+            <Col >
+
+            </Col>
             <Col className='Client'>
                 <Button><Link to='/' className='navbar-text'>Dashboard</Link></Button>
-            </Col>
-            <Col >
-                <Button><Link to='/homepage' className='navbar-text'>Homepage</Link></Button>
             </Col>
             <Col >
                 <Button ><Link to='/aboutUs' className='navbar-text' >About us</Link></Button>
