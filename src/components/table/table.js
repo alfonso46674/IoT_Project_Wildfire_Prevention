@@ -9,13 +9,15 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import axios from 'axios';
 import {url} from '../../config/env_variables';
+import MapPopup from '../mapPopup/mapPopup';
 
 let urlObtainHistory = `${url}/api/data/history`
 
 const TableInfo = () => {
-
+  //state variables to look for changes in the sensors data from the backend
   const [sensorData,setSensorData] = React.useState([])
 
+  //obtain the sensors data from the backend
   React.useEffect(()=>{
     axios.get(urlObtainHistory)
     .then(res =>{
@@ -26,6 +28,15 @@ const TableInfo = () => {
       console.log(err)
     })
   },[])
+
+  
+  //variables for the map dialog state
+  const [isOpen, setIsOpen] = React.useState(false)
+
+  const togglePopup = () => {
+    setIsOpen(!isOpen)
+    console.log(isOpen)
+  }
 
   
   return (
@@ -55,7 +66,14 @@ const TableInfo = () => {
                 <TableCell align="center">{row.co2}</TableCell>
                 <TableCell align="center">{row.temperature}</TableCell>
                 <TableCell align="center">{row.humidity}</TableCell>
-                <TableCell align="center">{row.location}</TableCell>
+                <TableCell align="center">
+                  <input type="button" value="Show on map" onClick={togglePopup}/>
+                  {isOpen && <MapPopup
+                    latitude={row.latitudeGPS}
+                    longitude={row.longitudeGPS}
+                    handleClose={togglePopup}
+                  />}
+                  </TableCell>
                 <TableCell align="center">{row.risk}</TableCell>
                 <TableCell align="center">{row.dateTime}</TableCell>
               </TableRow>
