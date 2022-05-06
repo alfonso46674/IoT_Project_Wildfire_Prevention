@@ -1,3 +1,31 @@
 .TableDivContainer{
-
+  .warning{
+    background-color: #F6A609;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    color: white;
+  }
+  .danger{
+    background-color: #EB5757;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    color: white;
+  }
+  .refresh{
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  .darger-class{
+    color: #EB5757;
+  }
+  .warning-class{
+    color: #F6A609;
+  }
+  .top-row{
+    font-weight: bold;
+    color: #0F456B;
+    font-size: 15px;
+  }
 }

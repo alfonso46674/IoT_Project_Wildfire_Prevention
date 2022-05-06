@@ -21,10 +21,10 @@ const Navbar = ({ user, setUser }) => {
 
             </Col>
             <Col className='Client'>
-                <Button><Link to='/' className='navbar-text'>Dashboard</Link></Button>
+            <button type="button" class="btn btn-danger buttons" ><Link to='/' className='navbar-text' >Dashboard</Link></button>
             </Col>
             <Col >
-                <Button ><Link to='/aboutUs' className='navbar-text' >About us</Link></Button>
+                <button type="button" class="btn btn-outline-danger buttons" ><Link to='/aboutUs' className='navbar-text' >About us</Link></button>
             </Col>
         </Row>
     </Container>

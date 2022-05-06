@@ -11,8 +11,15 @@
   border: 1px solid;
   .navbar-text{
     color: $white;
+    text-decoration: none;
   }
   .navbar-text:hover{
     color: rgb(187, 50, 71);
+    text-decoration: none;
+  }
+  .buttons{
+    color: white;
+    border: none;
+    background-color: transparent;
   }
 }

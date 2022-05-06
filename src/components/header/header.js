@@ -5,7 +5,7 @@ const Header = () => {
   return(
       <div className='header'>
         <p>Wildfire Prevention</p>
-        <hr/>
+        <hr style={{backgroundColor:'darkBlue'}}/>
       </div>
     )
 }
