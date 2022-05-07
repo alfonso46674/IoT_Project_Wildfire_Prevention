@@ -16,7 +16,7 @@ let urlObtainHistory = `${url}/api/data/history`
 const TableInfo = () => {
   //state variables to look for changes in the sensors data from the backend
   const [sensorData, setSensorData] = React.useState([])
-  const [mapData, setmapData] = useState([])
+
   const [refreshSensorData, setRefreshSensorData] = React.useState(false)
 
   // State variables for notifications
@@ -67,8 +67,17 @@ const TableInfo = () => {
     console.log(isOpen)
   }
 
+  //used to select only one item from a map
+  //https://www.devcript.com/how-to-select-only-one-element-of-a-map-in-react/
+  //This is used to fix the problem where when a map is clicked, all of the gps coordinates of all the data are passed
+  const [selectElement,setSelectElement] = React.useState(0)
+
+  const handleClick = (uid) => {
+    setSelectElement(uid)
+  }
 
   return (
+    
     <div className='TableDivContainer'>
       <button type="button" className="btn btn-outline-primary refresh" onClick={() => setRefreshSensorData(!refreshSensorData)}>Refresh data</button>
       {
@@ -99,16 +108,16 @@ const TableInfo = () => {
                 <TableCell align="center" component="th" scope="row">
                   {row.sensorId}
                 </TableCell>
-                <TableCell align="center">{row.co2}</TableCell>
+                <TableCell align="center">{row.co2 + '%'}</TableCell>
                 <TableCell align="center">{row.temperature + 'ºC'}</TableCell>
-                <TableCell align="center">{row.humidity}</TableCell>
+                <TableCell align="center">{row.humidity + '%'}</TableCell>
                 <TableCell align="center">
-                  <button type="button" class="btn btn-outline-primary refresh" onClick={togglePopup}>Show in map</button>
-                  {isOpen && <MapPopup
+                  <button type="button" class="btn btn-outline-primary refresh" onClick={() => {togglePopup(); handleClick(row.uid);}}>Show in map</button>
+                 {isOpen && selectElement === row.uid ? <MapPopup
                     latitude={row.latitudeGPS}
                     longitude={row.longitudeGPS}
                     handleClose={togglePopup}
-                  />}
+                  />: ''}
                 </TableCell>
                 <TableCell align="center" className={`${row.risk === 'Inminent' ? "darger-class" : row.risk === 'High' ? 'warning-class' : ''}`}>{row.risk} </TableCell>
                 <TableCell align="center">{row.dateTime}</TableCell>
